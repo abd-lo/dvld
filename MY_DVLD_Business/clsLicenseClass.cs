@@ -109,6 +109,11 @@ namespace MY_DVLD_Business
 			return null;
 		}
 
+		public static int GetDefaultValidityLength(int LicenseClassID)
+		{
+			return clsLicenseData.GetDefaultValidityLength(LicenseClassID);
+		}
+
 
 
 	}

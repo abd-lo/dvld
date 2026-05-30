@@ -127,8 +127,6 @@ namespace MY_DVLD_Business
 		}
 
 
-
-
 		public static DataTable GetAllApplications()
 		{
 			return clsApplicationData.GetAllApplications();
@@ -198,12 +196,10 @@ namespace MY_DVLD_Business
 			clsApplicationData.GetActiveApplicationIDForPersonIDAndLicenseClass(ref ApplicationID, ApplicantID, LicenseClass);
 		}
 
-
-
-		public static bool UpdateStatus(int ApplicationID, enApplicationStatus ApplicationStatus)
+		public  bool UpdateStatus( enApplicationStatus ApplicationStatus)
 
 		{
-			return clsApplicationData.UpdateStatus(ApplicationID, (int)ApplicationStatus);
+			return clsApplicationData.UpdateStatus(this.ApplicationID, (int)ApplicationStatus);
 		}
 
 

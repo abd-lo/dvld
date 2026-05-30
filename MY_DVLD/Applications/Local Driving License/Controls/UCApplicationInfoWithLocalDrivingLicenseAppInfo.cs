@@ -19,7 +19,7 @@ namespace MY_DVLD.Applications.Controls
 			InitializeComponent();
 		}
 
-		clsLocalDrivingLicenseApplication LDLApp;
+		public clsLocalDrivingLicenseApplication LDLApp { get; private set; }
 
 		private void _ResetDefaultValues()
 		{
@@ -35,7 +35,7 @@ namespace MY_DVLD.Applications.Controls
 			lblLocalDrivingLicenseApplicationID.Text = LDLApp.LocalDrivingLicenseApplicationID.ToString();
 			lblAppliedFor.Text = LDLApp.LicenseClassText;
 			lblPassedTests.Text = LDLApp.GetPassedTestsCount().ToString();
-			bool IsLicenseExisted=LDLApp.IsActiveLicenseForPersonIDAndLicenseClassExisted();
+			bool IsLicenseExisted = LDLApp.IsActiveLicenseForPersonIDAndLicenseClassExisted();
 			llShowLicenceInfo.Enabled = IsLicenseExisted;
 		}
 

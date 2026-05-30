@@ -101,6 +101,12 @@
     <Compile Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.Designer.cs">
       <DependentUpon>UCLocalDrivingLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\Local Driving Licenses\frmIssueLocalDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\Local Driving Licenses\frmIssueLocalDrivingLicense.Designer.cs">
+      <DependentUpon>frmIssueLocalDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\Local Driving Licenses\frmShowLocalDrivingLicense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.resx">
       <DependentUpon>UCLocalDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Local Driving Licenses\frmIssueLocalDrivingLicense.resx">
+      <DependentUpon>frmIssueLocalDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Driving Licenses\frmShowLocalDrivingLicense.resx">
       <DependentUpon>frmShowLocalDrivingLicense.cs</DependentUpon>

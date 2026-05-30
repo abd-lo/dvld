@@ -187,5 +187,43 @@ WHERE DriverID = @DriverID";
 			return IsFound;
 		}
 
+		public static bool FindDriverByPersonID(ref int DriverID,  int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+		{
+			bool IsFound = false;
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"SELECT * FROM Drivers WHERE PersonID = @PersonID";
+
+			SqlCommand command = new SqlCommand(query, connection);
+			command.Parameters.AddWithValue($"@PersonID", PersonID);
+
+			try
+			{
+				connection.Open();
+
+				SqlDataReader reader = command.ExecuteReader();
+
+				if (reader.Read())
+				{
+					DriverID = reader["DriverID"] != DBNull.Value ? Convert.ToInt32(reader["DriverID"]) : -1;
+					CreatedByUserID = reader["CreatedByUserID"] != DBNull.Value ? Convert.ToInt32(reader["CreatedByUserID"]) : -1;
+					CreatedDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : DateTime.MinValue;
+					IsFound = true;
+				}
+
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+				IsFound = false;
+			}
+			finally
+			{
+				connection.Close();
+			}
+			return IsFound;
+		}
+
 	}
 }

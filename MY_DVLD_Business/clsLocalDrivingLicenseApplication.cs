@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using static MY_DVLD_Business.clsApplication;
 using MY_DVLD_Business.Enum;
 
+
 namespace MY_DVLD_Business
 {
 	public class clsLocalDrivingLicenseApplication : clsApplication
@@ -159,13 +160,11 @@ namespace MY_DVLD_Business
 			return clsTestAppointment.GetAllTestAppointmentsForLDLAppIDAndTestType(this.LocalDrivingLicenseApplicationID, TestType);
 		}
 
-
 		public bool IsActiveTestAppointmentForTestTypeExisted(clsTestType.enTestType TestType)
 		{
 
 			return clsTestAppointment.IsActiveTestAppointmentForTestTypeExisted(this.LocalDrivingLicenseApplicationID, TestType);
 		}
-
 
 		public bool IsLockedTestAppointmentForTestTypeExisted(clsTestType.enTestType TestType)
 		{
@@ -184,13 +183,58 @@ namespace MY_DVLD_Business
 			return clsLocalDrivingLicenseApplicationData.DoesAttendedTestByTestType(this.LocalDrivingLicenseApplicationID, (int)TestType);
 		}
 
-		public  clsTest GetLastTestByTestType( clsTestType.enTestType TestTypeID)
+		public clsTest GetLastTestByTestType(clsTestType.enTestType TestTypeID)
 		{
-			return  clsTest.GetLastTestByPersonIDAndTestType(this.ApplicantPersonID, TestTypeID,this.LicenseClassID);
+			return clsTest.GetLastTestByPersonIDAndTestType(this.ApplicantPersonID, TestTypeID, this.LicenseClassID);
 
 		}
 
-		//GetNumberOfTriesPerTest
+
+		public int IssueNewDrivingLicense(string Notes, int CreatedByUserID)
+		{
+			clsDriver Driver = clsDriver.FindDriverByPersonID(this.ApplicantPersonID);
+			//creat a driver record If its first time else do nothing
+			if (Driver == null)
+			{
+				Driver = new clsDriver();
+
+				Driver.PersonID = this.ApplicantPersonID;
+				Driver.CreatedByUserID = CreatedByUserID;
+				Driver.CreatedDate = DateTime.Now;
+
+				if (!Driver.Save())
+				{
+					return -1;
+				}
+
+			}
+
+			clsLicense License = new clsLicense();
+			License.ApplicationID = this.ApplicationID;
+			License.CreatedByUserID = CreatedByUserID;
+			License.LicenseClassID = this.LicenseClassID;
+			License.Notes = Notes;
+			License.DriverID = Driver.DriverID;
+			License.ExpirationDate = DateTime.Now.AddYears(clsLicenseClass.GetDefaultValidityLength(this.LicenseClassID));
+			License.IssueDate = DateTime.Now;
+			License.PaidFees = this.PaidFees;
+			License.IssueReason = clsLicense.enIssueReason.FirstTime;
+			License.IsActive = true;
+			if (License.Save())
+			{
+				this.UpdateStatus(enApplicationStatus.Completed);
+				return License.LicenseID;
+			}
+
+			else
+			{
+				return -1;
+			}
+
+		}
+
+
+
 	}
 }
 
