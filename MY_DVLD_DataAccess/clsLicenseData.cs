@@ -55,16 +55,16 @@ namespace MY_DVLD_DataAccess
 			return dt;
 		}
 
-		public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees, bool IsActive, int CreatedByUserID, byte IssueReason)
+		public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass, DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees, bool IsActive, int CreatedByUserID, byte IssueReason)
 		{
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 			try
 			{
 				string query = @"
 INSERT INTO Licenses
-(ApplicationID, DriverID, LicenseClassID, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, CreatedByUserID, IssueReason)
+(ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, CreatedByUserID, IssueReason)
 VALUES
-(@ApplicationID, @DriverID, @LicenseClassID, @IssueDate, @ExpirationDate, @Notes, @PaidFees, @IsActive, @CreatedByUserID, @IssueReason)
+(@ApplicationID, @DriverID, @LicenseClass, @IssueDate, @ExpirationDate, @Notes, @PaidFees, @IsActive, @CreatedByUserID, @IssueReason)
 
 SELECT SCOPE_IDENTITY();";
 
@@ -73,7 +73,7 @@ SELECT SCOPE_IDENTITY();";
 				// add parameters safely
 				command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
 				command.Parameters.AddWithValue("@DriverID", DriverID);
-				command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+				command.Parameters.AddWithValue("@LicenseClass", LicenseClass);
 				command.Parameters.AddWithValue("@IssueDate", IssueDate);
 				command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
 				command.Parameters.AddWithValue("@Notes", Notes);
@@ -270,6 +270,46 @@ WHERE LicenseID = @LicenseID";
 				connection.Close();
 			}
 			return LicenseID;
+		}
+
+		public static int GetDefaultValidityLength(int LicenseClassID)
+		{
+			int DefaultValidityLength = -1;
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"			
+			SELECT DefaultValidityLength
+			FROM            
+			LicenseClasses
+			where 
+			LicenseClass=@LicenseClassID;";
+
+			SqlCommand command = new SqlCommand(query, connection);
+			
+			command.Parameters.AddWithValue($"@LicenseClassID", LicenseClassID);
+
+			try
+			{
+				connection.Open();
+
+				object result = command.ExecuteScalar();
+
+				if (result != null && int.TryParse(result.ToString(), out int Result))
+				{
+					DefaultValidityLength = Result;
+				}
+
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+				DefaultValidityLength = -1;
+			}
+			finally
+			{
+				connection.Close();
+			}
+			return DefaultValidityLength;
 		}
 
 

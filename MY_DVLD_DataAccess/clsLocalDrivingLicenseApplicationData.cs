@@ -264,6 +264,5 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 		}
 
 
-
 	}
 }

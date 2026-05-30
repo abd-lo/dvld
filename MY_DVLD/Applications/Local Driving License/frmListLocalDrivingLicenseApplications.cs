@@ -237,7 +237,7 @@ namespace MY_DVLD.Applications.Local_Driving_License
 				return;
 			}
 
-			if (!clsApplication.UpdateStatus(LDLApp.ApplicationID, clsApplication.enApplicationStatus.Cancelled))
+			if (LDLApp.UpdateStatus(clsApplication.enApplicationStatus.Cancelled))
 			{
 				MessageBox.Show($"Can't Be Canclled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
@@ -302,7 +302,7 @@ namespace MY_DVLD.Applications.Local_Driving_License
 
 			int LicenseID = LDLApp.GetActiveLicenseForPersonIDAndLicenseClass();
 
-			if (LicenseID ==-1)
+			if (LicenseID == -1)
 			{
 				MessageBox.Show($"Error Finding This License With LicenseID{LicenseID}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
@@ -316,7 +316,7 @@ namespace MY_DVLD.Applications.Local_Driving_License
 		private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			int LDLID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-			frmListTestAppointment frm=new frmListTestAppointment(LDLID,clsTestType.enTestType.VisionTest);
+			frmListTestAppointment frm = new frmListTestAppointment(LDLID, clsTestType.enTestType.VisionTest);
 			frm.ShowDialog();
 			_RefreshData();
 		}
@@ -333,6 +333,14 @@ namespace MY_DVLD.Applications.Local_Driving_License
 		{
 			int LDLID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
 			frmListTestAppointment frm = new frmListTestAppointment(LDLID, clsTestType.enTestType.StreetTest);
+			frm.ShowDialog();
+			_RefreshData();
+		}
+
+		private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			int LDLID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+			frmIssueLocalDrivingLicense frm = new frmIssueLocalDrivingLicense(LDLID);
 			frm.ShowDialog();
 			_RefreshData();
 		}
