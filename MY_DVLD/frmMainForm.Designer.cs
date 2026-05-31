@@ -182,7 +182,7 @@
 			// toolStripSeparator6
 			// 
 			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(332, 6);
+			this.toolStripSeparator6.Size = new System.Drawing.Size(381, 6);
 			// 
 			// tsMManageApplications
 			// 
@@ -215,7 +215,7 @@
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(332, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(381, 6);
 			// 
 			// DetainLicensesToolStripMenuItem1
 			// 
@@ -283,6 +283,7 @@
 			this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
 			this.driversToolStripMenuItem.Size = new System.Drawing.Size(156, 68);
 			this.driversToolStripMenuItem.Text = "Drivers";
+			this.driversToolStripMenuItem.Click += new System.EventHandler(this.driversToolStripMenuItem_Click);
 			// 
 			// employeesToolStripMenuItem
 			// 
@@ -333,7 +334,7 @@
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(246, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(262, 6);
 			// 
 			// signOutToolStripMenuItem
 			// 

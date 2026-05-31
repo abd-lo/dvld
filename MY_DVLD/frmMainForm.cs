@@ -1,5 +1,6 @@
 ﻿using MY_DVLD.Applications.Application_Types;
 using MY_DVLD.Applications.Local_Driving_License;
+using MY_DVLD.Drivers;
 using MY_DVLD.GlobalClasses;
 using MY_DVLD.Login;
 using MY_DVLD.People;
@@ -52,7 +53,7 @@ namespace MY_DVLD
 		{
 			frmChangeUserPassword frm = new frmChangeUserPassword(clsGlobal.CurrentUser.UserID);
 			frm.ShowDialog();
-		}	
+		}
 
 		private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -63,6 +64,12 @@ namespace MY_DVLD
 		private void manageLocalDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+			frm.ShowDialog();
+		}
+
+		private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmListDrivers frm = new frmListDrivers();
 			frm.ShowDialog();
 		}
 	}

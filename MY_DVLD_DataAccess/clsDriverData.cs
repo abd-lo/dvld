@@ -11,16 +11,18 @@ namespace MY_DVLD_DataAccess
 	public class clsDriverData
 
 	{
-
-
-
-
 		public static DataTable GetAllDrivers()
 		{
 			DataTable dt = new DataTable();
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-			string query = @"SELECT * FROM Drivers";
+			string query = @"select Drivers.DriverID,Drivers.PersonID,People.NationalNo,
+CONCAT(firstName, ' ', secondName, ' ', thirdName, ' ', lastName) AS FullName,
+CreatedDate,
+(select count(*) from Licenses where Drivers.DriverID=Licenses.DriverID)as ActiveLicensesNo
+from Drivers 
+join people on Drivers.PersonID=People.PersonID
+order by Drivers.DriverID  ;";
 
 			SqlCommand command = new SqlCommand(query, connection);
 
@@ -187,7 +189,7 @@ WHERE DriverID = @DriverID";
 			return IsFound;
 		}
 
-		public static bool FindDriverByPersonID(ref int DriverID,  int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+		public static bool FindDriverByPersonID(ref int DriverID, int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
 		{
 			bool IsFound = false;
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

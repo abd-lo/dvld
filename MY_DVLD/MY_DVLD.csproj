@@ -92,6 +92,18 @@
     <Compile Include="Applications\Local Driving License\frmShowApplicationInfo.Designer.cs">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\frmShowPersonInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmShowPersonInfo.Designer.cs">
+      <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drivers\frmListDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmListDrivers.Designer.cs">
+      <DependentUpon>frmListDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalClasses\clsGlobal.cs" />
     <Compile Include="GlobalClasses\clsUtil.cs" />
     <Compile Include="GlobalClasses\clsValidation.cs" />
@@ -249,6 +261,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmShowApplicationInfo.resx">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmListDrivers.resx">
+      <DependentUpon>frmListDrivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmShowPersonInfo.resx">
+      <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.resx">
       <DependentUpon>UCLocalDrivingLicense.cs</DependentUpon>
