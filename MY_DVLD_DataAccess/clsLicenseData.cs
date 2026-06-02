@@ -55,6 +55,45 @@ namespace MY_DVLD_DataAccess
 			return dt;
 		}
 
+		public static DataTable GetAllLicensesByPersonID(int PersonID)
+		{
+			DataTable dt = new DataTable();
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"SELECT        Licenses.LicenseID AS [Local LicneseID], Licenses.ApplicationID as[AppID],LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
+FROM            Licenses INNER JOIN
+                         Applications ON Applications.ApplicationID = Licenses.ApplicationID INNER JOIN
+                         LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+						 where  Applications.ApplicantPersonID=@PersonID";
+
+
+
+			SqlCommand command = new SqlCommand(query, connection);
+			command.Parameters.AddWithValue("@PersonID", PersonID);
+
+			try
+			{
+				connection.Open();
+
+				SqlDataReader reader = command.ExecuteReader();
+
+				if (reader.HasRows)
+				{
+					dt.Load(reader);
+				}
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+			}
+			finally
+			{
+				connection.Close();
+			}
+
+			return dt;
+		}
+
 		public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass, DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees, bool IsActive, int CreatedByUserID, byte IssueReason)
 		{
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

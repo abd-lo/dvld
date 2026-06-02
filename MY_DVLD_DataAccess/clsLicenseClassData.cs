@@ -49,12 +49,12 @@ namespace MY_DVLD_DataAccess
 			try
 			{
 				string query = @"
-INSERT INTO LicenseClasses
-(ClassName, ClassDescription, MinimumAllowedAge, DefaultValidityLength, ClassFees)
-VALUES
-(@ClassName, @ClassDescription, @MinimumAllowedAge, @DefaultValidityLength, @ClassFees)
+				INSERT INTO LicenseClasses
+				(ClassName, ClassDescription, MinimumAllowedAge, DefaultValidityLength, ClassFees)
+				VALUES
+				(@ClassName, @ClassDescription, @MinimumAllowedAge, @DefaultValidityLength, @ClassFees)
 
-SELECT SCOPE_IDENTITY();";
+				SELECT SCOPE_IDENTITY();";
 
 				SqlCommand command = new SqlCommand(query, connection);
 
@@ -93,9 +93,9 @@ DefaultValidityLength = @DefaultValidityLength,
 ClassFees = @ClassFees
 WHERE LicenseClassID = @LicenseClassID;";
 
-    SqlCommand command = new SqlCommand(query, connection);
+				SqlCommand command = new SqlCommand(query, connection);
 
-    // add parameters safely";
+				// add parameters safely";
 				command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 				command.Parameters.AddWithValue("@ClassName", ClassName);
 				command.Parameters.AddWithValue("@ClassDescription", ClassDescription);

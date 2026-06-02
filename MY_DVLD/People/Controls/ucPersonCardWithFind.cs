@@ -72,6 +72,7 @@ namespace MY_DVLD.People.Controls
 		{
 			_IntializeFindByComboBox();
 		}
+
 		public event Action<int> OnPersonSelectedEvent;
 		#endregion
 		
