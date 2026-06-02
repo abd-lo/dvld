@@ -36,16 +36,16 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.dgvDrivers = new System.Windows.Forms.DataGridView();
 			this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.ShowPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.IssueInternationalLicnese = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblTitle = new System.Windows.Forms.Label();
 			this.cbFilterBy = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtFilterValue = new System.Windows.Forms.TextBox();
 			this.pbPersonImage = new System.Windows.Forms.PictureBox();
-			this.ShowPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
-			this.IssueInternationalLicnese = new System.Windows.Forms.ToolStripMenuItem();
-			this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnClose = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDrivers)).BeginInit();
 			this.cmsApplications.SuspendLayout();
@@ -124,17 +124,43 @@
             this.toolStripSeparator5,
             this.showPersonLicenseHistoryToolStripMenuItem});
 			this.cmsApplications.Name = "contextMenuStrip1";
-			this.cmsApplications.Size = new System.Drawing.Size(242, 152);
+			this.cmsApplications.Size = new System.Drawing.Size(242, 130);
+			// 
+			// ShowPersonInfo
+			// 
+			this.ShowPersonInfo.Image = global::MY_DVLD.Properties.Resources.PersonDetails_32;
+			this.ShowPersonInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+			this.ShowPersonInfo.Name = "ShowPersonInfo";
+			this.ShowPersonInfo.Size = new System.Drawing.Size(241, 38);
+			this.ShowPersonInfo.Text = "&ShowPersonInfo";
+			this.ShowPersonInfo.Click += new System.EventHandler(this.ShowPersonInfo_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(238, 6);
 			// 
+			// IssueInternationalLicnese
+			// 
+			this.IssueInternationalLicnese.Image = global::MY_DVLD.Properties.Resources.edit_32;
+			this.IssueInternationalLicnese.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+			this.IssueInternationalLicnese.Name = "IssueInternationalLicnese";
+			this.IssueInternationalLicnese.Size = new System.Drawing.Size(241, 38);
+			this.IssueInternationalLicnese.Text = "&Issue International Licnese";
+			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(238, 6);
+			// 
+			// showPersonLicenseHistoryToolStripMenuItem
+			// 
+			this.showPersonLicenseHistoryToolStripMenuItem.Image = global::MY_DVLD.Properties.Resources.PersonLicenseHistory_32;
+			this.showPersonLicenseHistoryToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+			this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
+			this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(241, 38);
+			this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
+			this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
 			// 
 			// lblTitle
 			// 
@@ -191,31 +217,6 @@
 			this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbPersonImage.TabIndex = 151;
 			this.pbPersonImage.TabStop = false;
-			// 
-			// ShowPersonInfo
-			// 
-			this.ShowPersonInfo.Image = global::MY_DVLD.Properties.Resources.PersonDetails_32;
-			this.ShowPersonInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.ShowPersonInfo.Name = "ShowPersonInfo";
-			this.ShowPersonInfo.Size = new System.Drawing.Size(241, 38);
-			this.ShowPersonInfo.Text = "&ShowPersonInfo";
-			this.ShowPersonInfo.Click += new System.EventHandler(this.ShowPersonInfo_Click);
-			// 
-			// IssueInternationalLicnese
-			// 
-			this.IssueInternationalLicnese.Image = global::MY_DVLD.Properties.Resources.edit_32;
-			this.IssueInternationalLicnese.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.IssueInternationalLicnese.Name = "IssueInternationalLicnese";
-			this.IssueInternationalLicnese.Size = new System.Drawing.Size(241, 38);
-			this.IssueInternationalLicnese.Text = "&Issue International Licnese";
-			// 
-			// showPersonLicenseHistoryToolStripMenuItem
-			// 
-			this.showPersonLicenseHistoryToolStripMenuItem.Image = global::MY_DVLD.Properties.Resources.PersonLicenseHistory_32;
-			this.showPersonLicenseHistoryToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
-			this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(241, 38);
-			this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
 			// 
 			// btnClose
 			// 

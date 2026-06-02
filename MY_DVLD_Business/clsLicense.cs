@@ -124,6 +124,13 @@ namespace MY_DVLD_Business
 			return clsLicenseData.GetAllLicenses();
 		}
 
+
+		public static DataTable GetAllLicensesByPersonID(int PersonID)
+		{
+			return clsLicenseData.GetAllLicensesByPersonID(PersonID);
+			
+		}
+
 		bool _AddNewLicense()
 		{
 			this.LicenseID = clsLicenseData.AddNewLicense(this.ApplicationID, this.DriverID, this.LicenseClassID, this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees, this.IsActive, this.CreatedByUserID, (byte)this.IssueReason);

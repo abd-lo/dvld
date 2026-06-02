@@ -92,12 +92,6 @@
     <Compile Include="Applications\Local Driving License\frmShowApplicationInfo.Designer.cs">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drivers\frmShowPersonInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Drivers\frmShowPersonInfo.Designer.cs">
-      <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Drivers\frmListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +101,18 @@
     <Compile Include="GlobalClasses\clsGlobal.cs" />
     <Compile Include="GlobalClasses\clsUtil.cs" />
     <Compile Include="GlobalClasses\clsValidation.cs" />
+    <Compile Include="Licenses\Controls\UCDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\Controls\UCDriverLicenses.Designer.cs">
+      <DependentUpon>UCDriverLicenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmShowDrivingLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmShowDrivingLicenseHistory.Designer.cs">
+      <DependentUpon>frmShowDrivingLicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -265,8 +271,11 @@
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Drivers\frmShowPersonInfo.resx">
-      <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Licenses\Controls\UCDriverLicenses.resx">
+      <DependentUpon>UCDriverLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmShowDrivingLicenseHistory.resx">
+      <DependentUpon>frmShowDrivingLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.resx">
       <DependentUpon>UCLocalDrivingLicense.cs</DependentUpon>
