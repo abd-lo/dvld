@@ -92,6 +92,12 @@
     <Compile Include="Applications\Local Driving License\frmShowApplicationInfo.Designer.cs">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Renew Local License\frmRenewLocalLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Renew Local License\frmRenewLocalLicenseApplication.Designer.cs">
+      <DependentUpon>frmRenewLocalLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drivers\frmListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="Licenses\frmShowDrivingLicenseHistory.Designer.cs">
       <DependentUpon>frmShowDrivingLicenseHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\Local Driving Licenses\Controls\UCDriverLicenseWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\Local Driving Licenses\Controls\UCDriverLicenseWithFilter.Designer.cs">
+      <DependentUpon>UCDriverLicenseWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.cs">
       <SubType>UserControl</SubType>
@@ -268,6 +280,9 @@
     <EmbeddedResource Include="Applications\Local Driving License\frmShowApplicationInfo.resx">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Renew Local License\frmRenewLocalLicenseApplication.resx">
+      <DependentUpon>frmRenewLocalLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\frmShowDrivingLicenseHistory.resx">
       <DependentUpon>frmShowDrivingLicenseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Local Driving Licenses\Controls\UCDriverLicenseWithFilter.resx">
+      <DependentUpon>UCDriverLicenseWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Driving Licenses\Controls\UCLocalDrivingLicense.resx">
       <DependentUpon>UCLocalDrivingLicense.cs</DependentUpon>
@@ -490,6 +508,8 @@
       <Name>MY_DVLD_Business</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Applications\Renew Local License\Controls\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

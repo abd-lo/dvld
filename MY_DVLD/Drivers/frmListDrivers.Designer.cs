@@ -38,8 +38,6 @@
 			this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.ShowPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.IssueInternationalLicnese = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblTitle = new System.Windows.Forms.Label();
 			this.cbFilterBy = new System.Windows.Forms.ComboBox();
@@ -120,11 +118,9 @@
 			this.cmsApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ShowPersonInfo,
             this.toolStripSeparator2,
-            this.IssueInternationalLicnese,
-            this.toolStripSeparator5,
             this.showPersonLicenseHistoryToolStripMenuItem});
 			this.cmsApplications.Name = "contextMenuStrip1";
-			this.cmsApplications.Size = new System.Drawing.Size(242, 130);
+			this.cmsApplications.Size = new System.Drawing.Size(242, 108);
 			// 
 			// ShowPersonInfo
 			// 
@@ -139,19 +135,6 @@
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(238, 6);
-			// 
-			// IssueInternationalLicnese
-			// 
-			this.IssueInternationalLicnese.Image = global::MY_DVLD.Properties.Resources.edit_32;
-			this.IssueInternationalLicnese.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.IssueInternationalLicnese.Name = "IssueInternationalLicnese";
-			this.IssueInternationalLicnese.Size = new System.Drawing.Size(241, 38);
-			this.IssueInternationalLicnese.Text = "&Issue International Licnese";
-			// 
-			// toolStripSeparator5
-			// 
-			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(238, 6);
 			// 
 			// showPersonLicenseHistoryToolStripMenuItem
 			// 
@@ -267,8 +250,6 @@
 		private System.Windows.Forms.ContextMenuStrip cmsApplications;
 		private System.Windows.Forms.ToolStripMenuItem ShowPersonInfo;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-		private System.Windows.Forms.ToolStripMenuItem IssueInternationalLicnese;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem showPersonLicenseHistoryToolStripMenuItem;
 		private System.Windows.Forms.Label lblTitle;
 		private System.Windows.Forms.ComboBox cbFilterBy;
