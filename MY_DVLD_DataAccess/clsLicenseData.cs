@@ -137,6 +137,7 @@ SELECT SCOPE_IDENTITY();";
 
 		public static bool UpdateLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees, bool IsActive, int CreatedByUserID, byte IssueReason)
 		{
+
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 			try
 			{
@@ -144,7 +145,7 @@ SELECT SCOPE_IDENTITY();";
 SET
 ApplicationID = @ApplicationID,
 DriverID = @DriverID,
-LicenseClassID = @LicenseClassID,
+LicenseClass = @LicenseClassID,
 IssueDate = @IssueDate,
 ExpirationDate = @ExpirationDate,
 Notes = @Notes,
@@ -266,7 +267,7 @@ WHERE LicenseID = @LicenseID";
 
 		{
 
-			return GetActiveLicenseIDByPersonIDAndLicenseClass(PersonID, LicenseClassID)!=-1;
+			return GetActiveLicenseIDByPersonIDAndLicenseClass(PersonID, LicenseClassID) != -1;
 
 
 		}
@@ -324,7 +325,7 @@ WHERE LicenseID = @LicenseID";
 			LicenseClass=@LicenseClassID;";
 
 			SqlCommand command = new SqlCommand(query, connection);
-			
+
 			command.Parameters.AddWithValue($"@LicenseClassID", LicenseClassID);
 
 			try
@@ -351,6 +352,39 @@ WHERE LicenseID = @LicenseID";
 			return DefaultValidityLength;
 		}
 
+		public static bool DeactiveLicnese(int LicenseID)
+		{
+
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			try
+			{
+				string query = @"UPDATE Licenses
+								SET
+								IsActive = 0
+								WHERE LicenseID = @LicenseID;";
+
+				SqlCommand command = new SqlCommand(query, connection);
+
+				// add parameters safely
+				command.Parameters.AddWithValue("@LicenseID", LicenseID);
+				connection.Open();
+				int rowsAffected = command.ExecuteNonQuery();
+
+				return (rowsAffected > 0);
+			}
+			catch (Exception ex)
+			{
+				// log the error or show message
+				Console.WriteLine("Error Deactiving License: " + ex.Message);
+				return false;
+			}
+			finally
+			{
+
+				connection.Close();
+			}
+
+		}
 
 	}
 }
