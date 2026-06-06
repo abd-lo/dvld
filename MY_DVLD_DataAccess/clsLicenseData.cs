@@ -96,6 +96,7 @@ FROM            Licenses INNER JOIN
 
 		public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass, DateTime IssueDate, DateTime ExpirationDate, string Notes, float PaidFees, bool IsActive, int CreatedByUserID, byte IssueReason)
 		{
+
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 			try
 			{
@@ -108,6 +109,7 @@ VALUES
 SELECT SCOPE_IDENTITY();";
 
 				SqlCommand command = new SqlCommand(query, connection);
+				//LicenseID ApplicationID   DriverID LicenseClass    IssueDate ExpirationDate  Notes PaidFees    IsActive IssueReason CreatedByUserID
 
 				// add parameters safely
 				command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
@@ -115,7 +117,11 @@ SELECT SCOPE_IDENTITY();";
 				command.Parameters.AddWithValue("@LicenseClass", LicenseClass);
 				command.Parameters.AddWithValue("@IssueDate", IssueDate);
 				command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
-				command.Parameters.AddWithValue("@Notes", Notes);
+				if (Notes == "")
+					command.Parameters.AddWithValue("@Notes", DBNull.Value);
+				else
+					command.Parameters.AddWithValue("@Notes", Notes);
+
 				command.Parameters.AddWithValue("@PaidFees", PaidFees);
 				command.Parameters.AddWithValue("@IsActive", IsActive);
 				command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
@@ -164,7 +170,11 @@ WHERE LicenseID = @LicenseID;";
 				command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 				command.Parameters.AddWithValue("@IssueDate", IssueDate);
 				command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
-				command.Parameters.AddWithValue("@Notes", Notes);
+
+				if (Notes == "")
+					command.Parameters.AddWithValue("@Notes", DBNull.Value);
+				else
+					command.Parameters.AddWithValue("@Notes", Notes);
 				command.Parameters.AddWithValue("@PaidFees", PaidFees);
 				command.Parameters.AddWithValue("@IsActive", IsActive);
 				command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
