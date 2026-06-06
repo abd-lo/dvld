@@ -24,7 +24,15 @@ namespace MY_DVLD.Licenses.Local_Driving_Licenses.Controls
 
 		public int LicenseID { get; private set; } = -1;
 		public clsLicense LicenseInfo { get; private set; } = null;
-
+		public bool IsFilterEnabled
+		{
+			get { return txtLicenseID.Enabled; }
+			set
+			{
+				txtLicenseID.Enabled = value;
+				btnFind.Enabled = value;
+			}
+		}
 		private void btnFind_Click(object sender, EventArgs e)
 		{
 			if (!int.TryParse(txtLicenseID.Text, out int LicenseID))
