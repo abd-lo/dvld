@@ -64,6 +64,12 @@ namespace MY_DVLD_Business
 			return clsDetainedLicenseData.GetAllDetainedLicenses();
 		}
 
+		public static DataTable GetDetainedLicenseWithData()
+		{
+			return clsDetainedLicenseData.GetDetainedLicenseWithData();
+		}
+
+
 		bool _AddNewDetainedLicense()
 		{
 			this.DetainID = clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID, this.IsReleased, this.ReleaseDate, this.ReleasedByUserID, this.ReleaseApplicationID);
@@ -125,7 +131,7 @@ namespace MY_DVLD_Business
 
 		public static bool IsLicenseDetained(int LicenseID)
 		{
-			bool IsDetained=clsDetainedLicenseData.IsLicenseDetainedByLicenseID(LicenseID);
+			bool IsDetained = clsDetainedLicenseData.IsLicenseDetainedByLicenseID(LicenseID);
 
 			return IsDetained;
 		}

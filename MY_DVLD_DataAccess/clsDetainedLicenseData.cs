@@ -5,11 +5,62 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace MY_DVLD_DataAccess
 {
 	public class clsDetainedLicenseData
 	{
+		//	SELECT DetainedLicenses.DetainID, DetainedLicenses.LicenseID, DetainedLicenses.DetainDate, DetainedLicenses.IsReleased, DetainedLicenses.FineFees, DetainedLicenses.ReleaseDate, People.NationalNo,
+		//Concat(People.FirstName, People.SecondName, People.ThirdName, People.LastName) As FullName, DetainedLicenses.ReleaseApplicationID
+		//	FROM            DetainedLicenses INNER JOIN
+		//	Licenses ON DetainedLicenses.LicenseID = Licenses.LicenseID INNER JOIN
+
+
+		//						 Applications ON Licenses.ApplicationID = Applications.ApplicationID INNER JOIN
+
+		//						 People ON Applications.ApplicantPersonID = People.PersonID
+		public static DataTable GetDetainedLicenseWithData()
+		{
+			DataTable dt = new DataTable();
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"
+			SELECT DetainedLicenses.DetainID, DetainedLicenses.LicenseID, DetainedLicenses.DetainDate, DetainedLicenses.IsReleased, DetainedLicenses.FineFees, DetainedLicenses.ReleaseDate, People.NationalNo,
+		Concat(People.FirstName, People.SecondName, People.ThirdName, People.LastName) As FullName, DetainedLicenses.ReleaseApplicationID
+			FROM            
+			DetainedLicenses INNER JOIN
+								Licenses ON DetainedLicenses.LicenseID = Licenses.LicenseID INNER JOIN
+								 Applications ON Licenses.ApplicationID = Applications.ApplicationID INNER JOIN
+
+								 People ON Applications.ApplicantPersonID = People.PersonID;
+			";
+
+			SqlCommand command = new SqlCommand(query, connection);
+
+			try
+			{
+				connection.Open();
+
+				SqlDataReader reader = command.ExecuteReader();
+
+				if (reader.HasRows)
+				{
+					dt.Load(reader);
+				}
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+			}
+			finally
+			{
+				connection.Close();
+			}
+
+			return dt;
+		}
 
 		public static DataTable GetAllDetainedLicenses()
 		{
@@ -217,7 +268,7 @@ WHERE DetainID = @DetainID";
 			{
 				connection.Open();
 				object result = command.ExecuteScalar();
-				if (result!=null && int.TryParse(result.ToString(), out int Output))
+				if (result != null && int.TryParse(result.ToString(), out int Output))
 				{
 					IsFound = true;
 				}

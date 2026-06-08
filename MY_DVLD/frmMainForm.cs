@@ -1,4 +1,5 @@
 ﻿using MY_DVLD.Applications.Application_Types;
+using MY_DVLD.Applications.Detain_and_Release_License;
 using MY_DVLD.Applications.Local_Driving_License;
 using MY_DVLD.Applications.Renew_Local_License;
 using MY_DVLD.Applications.ReplacementForLostOrDamaged;
@@ -84,6 +85,12 @@ namespace MY_DVLD
 		private void ReplacementLostOrDamagedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			frmReplacementForLostOrDamaged frm = new frmReplacementForLostOrDamaged();
+			frm.ShowDialog();
+		}
+
+		private void ManageDetainedLicensestoolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			frmManageDetainedLicenses frm = new frmManageDetainedLicenses();
 			frm.ShowDialog();
 		}
 	}
