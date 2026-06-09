@@ -94,18 +94,18 @@ namespace MY_DVLD_DataAccess
 			return dt;
 		}
 
-		public static int AddNewDetainedLicense(int LicenseID, DateTime DetainDate, float FineFees, int CreatedByUserID, bool IsReleased, DateTime ReleaseDate, int ReleasedByUserID, int ReleaseApplicationID)
+		public static int AddNewDetainedLicense(int LicenseID, DateTime DetainDate, float FineFees, int CreatedByUserID)
 		{
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 			try
 			{
 				string query = @"
-INSERT INTO DetainedLicenses
-(LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased, ReleaseDate, ReleasedByUserID, ReleaseApplicationID)
-VALUES
-(@LicenseID, @DetainDate, @FineFees, @CreatedByUserID, @IsReleased, @ReleaseDate, @ReleasedByUserID, @ReleaseApplicationID)
+									INSERT INTO DetainedLicenses
+									(LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased)
+									VALUES
+									(@LicenseID, @DetainDate, @FineFees, @CreatedByUserID, @IsReleased)
 
-SELECT SCOPE_IDENTITY();";
+									SELECT SCOPE_IDENTITY();";
 
 				SqlCommand command = new SqlCommand(query, connection);
 
@@ -114,10 +114,9 @@ SELECT SCOPE_IDENTITY();";
 				command.Parameters.AddWithValue("@DetainDate", DetainDate);
 				command.Parameters.AddWithValue("@FineFees", FineFees);
 				command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-				command.Parameters.AddWithValue("@IsReleased", IsReleased);
-				command.Parameters.AddWithValue("@ReleaseDate", ReleaseDate);
-				command.Parameters.AddWithValue("@ReleasedByUserID", ReleasedByUserID);
-				command.Parameters.AddWithValue("@ReleaseApplicationID", ReleaseApplicationID);
+				command.Parameters.AddWithValue("@IsReleased", 0);
+
+
 				connection.Open();
 				int ID = Convert.ToInt32(command.ExecuteScalar());
 				return ID;

@@ -24,10 +24,10 @@ namespace MY_DVLD
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(new frmLogin());
+			Application.Run(new frmLogin());
 			//Application.Run(new frmMainForm());
 			//Application.Run(new frmListPeople());
-			Application.Run(new frmManageDetainedLicenses());
+			//Application.Run(new frmManageDetainedLicenses());
 			//Application.Run(new frmAddEditPerson(1));
 			//Application.Run(new frmListUsers());
 			//Application.Run(new frmAddUpdateUser());

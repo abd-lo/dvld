@@ -165,7 +165,7 @@ namespace MY_DVLD.Drivers
 		private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			int PersonID = (int)dgvDrivers.CurrentRow.Cells[1].Value;
-			frmShowDrivingLicenseHistory frm = new frmShowDrivingLicenseHistory(PersonID);
+			frmShowPersonDrivingLicenseHistory frm = new frmShowPersonDrivingLicenseHistory(PersonID);
 			frm.ShowDialog();
 		}
 	}

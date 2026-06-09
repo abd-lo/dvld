@@ -1,4 +1,5 @@
 ﻿using MY_DVLD.GlobalClasses;
+using MY_DVLD.Licenses;
 using MY_DVLD.People;
 using MY_DVLD_Business;
 using System;
@@ -31,7 +32,7 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 
 		private void PesonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			string  NationalNo = (string)dgvDetainedLicenses.CurrentRow.Cells[6].Value;
+			string NationalNo = (string)dgvDetainedLicenses.CurrentRow.Cells[6].Value;
 			frmShowPersonInfo frm = new frmShowPersonInfo(NationalNo);
 			frm.ShowDialog();
 		}
@@ -43,7 +44,10 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 
 		private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			int LicenseID = (int)dgvDetainedLicenses.CurrentRow.Cells[1].Value;
+			clsLicense License = clsLicense.FindLicenseByID(LicenseID);
+			frmShowPersonDrivingLicenseHistory frm = new frmShowPersonDrivingLicenseHistory(License.ApplicationInfo.ApplicantPersonID);
+			frm.ShowDialog();
 		}
 
 		private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,7 +62,9 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 
 		private void btnDetainLicense_Click(object sender, EventArgs e)
 		{
-
+			frmDetainLicense frm = new frmDetainLicense();
+			frm.ShowDialog();
+			_RefreshData();
 		}
 
 
@@ -94,7 +100,7 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 			_SetFilterControlsVisibility(SelectedFilter);
 
 
-			bool IsValueEmptyORNone = (UserInputString == "" || SelectedFilter == "None")&&(SelectedFilter!="IsReleased");
+			bool IsValueEmptyORNone = (UserInputString == "" || SelectedFilter == "None") && (SelectedFilter != "IsReleased");
 
 
 			if (IsValueEmptyORNone)
@@ -157,7 +163,7 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 		private void _IntializeDataGridView()
 		{
 			_dtDetainedLicenses = clsDetainedLicense.GetDetainedLicenseWithData();
-			
+
 			dgvDetainedLicenses.DataSource = _dtDetainedLicenses;
 			_UpdateRecordsNo();
 
@@ -198,7 +204,7 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 			_dtDetainedLicenses = clsDetainedLicense.GetAllDetainedLicenses();
 
 			dgvDetainedLicenses.DataSource = _dtDetainedLicenses;
-			
+
 			_UpdateRecordsNo();
 		}
 
@@ -223,6 +229,11 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 		{
 			_ApplyUserFilter();
 
+		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

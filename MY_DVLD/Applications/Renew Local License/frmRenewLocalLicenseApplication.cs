@@ -128,7 +128,7 @@ namespace MY_DVLD.Applications.Renew_Local_License
 
 		private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			frmShowDrivingLicenseHistory frm = new frmShowDrivingLicenseHistory(_OldLicense.ApplicationInfo.ApplicantPersonID);
+			frmShowPersonDrivingLicenseHistory frm = new frmShowPersonDrivingLicenseHistory(_OldLicense.ApplicationInfo.ApplicantPersonID);
 			frm.ShowDialog();
 		}
 

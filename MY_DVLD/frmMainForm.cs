@@ -5,6 +5,7 @@ using MY_DVLD.Applications.Renew_Local_License;
 using MY_DVLD.Applications.ReplacementForLostOrDamaged;
 using MY_DVLD.Drivers;
 using MY_DVLD.GlobalClasses;
+using MY_DVLD.Licenses;
 using MY_DVLD.Login;
 using MY_DVLD.People;
 using MY_DVLD.Users;
@@ -91,6 +92,34 @@ namespace MY_DVLD
 		private void ManageDetainedLicensestoolStripMenuItem1_Click(object sender, EventArgs e)
 		{
 			frmManageDetainedLicenses frm = new frmManageDetainedLicenses();
+			frm.ShowDialog();
+		}
+
+		private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmDetainLicense frm = new frmDetainLicense();
+			frm.ShowDialog();
+		}
+
+		private void retakeTestToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+			frm.ShowDialog();
+		}
+
+		private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
 			frm.ShowDialog();
 		}
 	}

@@ -31,15 +31,15 @@ namespace MY_DVLD_Business
 
 		public clsDetainedLicense()
 		{
-			this.DetainID = 0;
-			this.LicenseID = 0;
+			this.DetainID = -1;
+			this.LicenseID = -1;
 			this.DetainDate = DateTime.Now;
 			this.FineFees = 0f;
-			this.CreatedByUserID = 0;
+			this.CreatedByUserID = -1;
 			this.IsReleased = false;
-			this.ReleaseDate = DateTime.Now;
-			this.ReleasedByUserID = 0;
-			this.ReleaseApplicationID = 0;
+			this.ReleaseDate = DateTime.MaxValue;
+			this.ReleasedByUserID = -1;
+			this.ReleaseApplicationID =-1;
 
 			this.Mode = enMode.AddNew;
 		}
@@ -72,7 +72,7 @@ namespace MY_DVLD_Business
 
 		bool _AddNewDetainedLicense()
 		{
-			this.DetainID = clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID, this.IsReleased, this.ReleaseDate, this.ReleasedByUserID, this.ReleaseApplicationID);
+			this.DetainID = clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID);
 			return (this.DetainID != -1);
 		}
 
@@ -127,7 +127,6 @@ namespace MY_DVLD_Business
 
 			return null;
 		}
-
 
 		public static bool IsLicenseDetained(int LicenseID)
 		{

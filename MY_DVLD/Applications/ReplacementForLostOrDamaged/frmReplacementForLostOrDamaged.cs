@@ -121,7 +121,7 @@ namespace MY_DVLD.Applications.ReplacementForLostOrDamaged
 
 		private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			frmShowDrivingLicenseHistory frm = new frmShowDrivingLicenseHistory(_OldLicense.DriverInfo.PersonID);
+			frmShowPersonDrivingLicenseHistory frm = new frmShowPersonDrivingLicenseHistory(_OldLicense.DriverInfo.PersonID);
 			frm.ShowDialog();
 		}
 	}

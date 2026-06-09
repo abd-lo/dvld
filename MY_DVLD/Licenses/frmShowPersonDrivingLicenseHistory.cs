@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace MY_DVLD.Licenses
 {
-	public partial class frmShowDrivingLicenseHistory : Form
+	public partial class frmShowPersonDrivingLicenseHistory : Form
 	{
 		int _PersonID = -1;
 
-		public frmShowDrivingLicenseHistory()
+		public frmShowPersonDrivingLicenseHistory()
 		{
 			InitializeComponent();
 		}
 
-		public frmShowDrivingLicenseHistory(int PersonID)
+		public frmShowPersonDrivingLicenseHistory(int PersonID)
 		{
 			InitializeComponent();
 			_PersonID = PersonID;
