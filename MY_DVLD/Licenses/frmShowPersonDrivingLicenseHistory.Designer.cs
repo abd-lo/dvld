@@ -1,6 +1,6 @@
 ﻿namespace MY_DVLD.Licenses
 {
-	partial class frmShowDrivingLicenseHistory
+	partial class frmShowPersonDrivingLicenseHistory
 	{
 		/// <summary>
 		/// Required designer variable.

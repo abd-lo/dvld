@@ -10,6 +10,7 @@ using MY_DVLD_Business;
 using MY_DVLD.Applications.Application_Types;
 using MY_DVLD.Tests.TestTypes;
 using MY_DVLD.Applications.Local_Driving_License;
+using MY_DVLD.Applications.Detain_and_Release_License;
 
 namespace MY_DVLD
 {
@@ -23,9 +24,10 @@ namespace MY_DVLD
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new frmLogin());
 			//Application.Run(new frmMainForm());
 			//Application.Run(new frmListPeople());
-			Application.Run(new frmLogin());
+			//Application.Run(new frmManageDetainedLicenses());
 			//Application.Run(new frmAddEditPerson(1));
 			//Application.Run(new frmListUsers());
 			//Application.Run(new frmAddUpdateUser());

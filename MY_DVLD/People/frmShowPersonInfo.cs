@@ -5,16 +5,27 @@ namespace MY_DVLD.People
 {
 	public partial class frmShowPersonInfo : Form
 	{
-		int _PersonID;
+		int _PersonID=-1;
+		string _NationalNo=null;
 
 		public frmShowPersonInfo(int PersonID)
 		{
 			InitializeComponent();
 			_PersonID = PersonID;
 		}
+
+		public frmShowPersonInfo(string NationalNo)
+		{
+			InitializeComponent();
+			_NationalNo = NationalNo;
+		}
 		private void frmShowPersonInfo_Load(object sender, System.EventArgs e)
 		{
-			ucPersonCard1.LoadPersonData(_PersonID);
+			if (_PersonID != -1)
+				ucPersonCard1.LoadPersonData(_PersonID);
+
+			else
+				ucPersonCard1.LoadPersonData(_NationalNo);
 		}
 
 		private void btnClose_Click(object sender, System.EventArgs e)

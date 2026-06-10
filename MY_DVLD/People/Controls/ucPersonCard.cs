@@ -19,15 +19,9 @@ namespace MY_DVLD.People.Controls
 		}
 		#region Vars
 
-		int _PersonID = -1;
-		public int PersonID
-		{ get { return _PersonID; } }
+		public int PersonID { get; private set; } = -1;
 
-		clsPerson _Person;
-		public clsPerson Person
-		{
-			get { return _Person; }
-		}
+		public clsPerson Person { get; private set; } = null;
 		enum enGender { Male, Female };
 
 		#endregion
@@ -35,31 +29,31 @@ namespace MY_DVLD.People.Controls
 
 		void _FillPersonData()
 		{
-			lbPersonID.Text = _Person.PersonID.ToString();
+			lbPersonID.Text = Person.PersonID.ToString();
 
-			lbFullName.Text = _Person.FirstName + _Person.SecondName + _Person.ThirdName + _Person.LastName;
-			lbNationalNo.Text = _Person.NationalNo;
-			lbDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+			lbFullName.Text = Person.FirstName + Person.SecondName + Person.ThirdName + Person.LastName;
+			lbNationalNo.Text = Person.NationalNo;
+			lbDateOfBirth.Text = Person.DateOfBirth.ToShortDateString();
 
-			if (_Person.Gender == (short)enGender.Male)
+			if (Person.Gender == (short)enGender.Male)
 				lbGender.Text = "Male";
 			else
 				lbGender.Text = "Female";
 
 
-			lbAddress.Text = _Person.Address;
-			lbPhone.Text = _Person.Phone;
-			lbEmail.Text = _Person.Email;
+			lbAddress.Text = Person.Address;
+			lbPhone.Text = Person.Phone;
+			lbEmail.Text = Person.Email;
 
-			lbCountry.Text = (clsCountry.Find(_Person.NationalityCountryID)).CountryName;
+			lbCountry.Text = (clsCountry.Find(Person.NationalityCountryID)).CountryName;
 
 
 		}
 
 		void _SetPersonImage()
 		{
-			enGender Gender = (enGender)_Person.Gender;
-			string ImagePath = _Person.ImagePath;
+			enGender Gender = (enGender)Person.Gender;
+			string ImagePath = Person.ImagePath;
 
 			pbPersonImage.Image = (Gender == enGender.Male) ?
 		 Properties.Resources.Male_512
@@ -75,9 +69,6 @@ namespace MY_DVLD.People.Controls
 				else
 					MessageBox.Show("  Image File Is Not Existed  " + ImagePath);
 			}
-
-
-
 		}
 
 		void _ResetValues()
@@ -85,7 +76,7 @@ namespace MY_DVLD.People.Controls
 			//why set PersonID to -1 ? 
 			//in order to make reset it if user is found and then another search happens
 			//and we are checking for is Person found via the person id
-			_PersonID = -1;
+			PersonID = -1;
 			lbPersonID.Text = "????";
 
 			lbFullName.Text = "????";
@@ -107,16 +98,16 @@ namespace MY_DVLD.People.Controls
 
 		public void LoadPersonData(int PersonID)
 		{
-			_Person = clsPerson.FindByID(PersonID);
+			Person = clsPerson.FindByID(PersonID);
 
-			if (_Person == null)
+			if (Person == null)
 			{
 				MessageBox.Show("No Person with ID = " + PersonID, "Person Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				_ResetValues();
 				return;
 			}
 
-			_PersonID = _Person.PersonID;
+			PersonID = Person.PersonID;
 
 			llEditPersonInfo.Enabled = true;
 			_FillPersonData();
@@ -127,17 +118,17 @@ namespace MY_DVLD.People.Controls
 
 		public void LoadPersonData(string NationalNo)
 		{
-			_Person = clsPerson.FindByNationalNo(NationalNo);
+			Person = clsPerson.FindByNationalNo(NationalNo);
 
 
 
-			if (_Person == null)
+			if (Person == null)
 			{
 				MessageBox.Show("No Person with NationalNumber = " + NationalNo, "Person Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				_ResetValues();
 				return;
 			}
-			_PersonID = _Person.PersonID;
+			PersonID = Person.PersonID;
 			llEditPersonInfo.Enabled = true;
 
 			_FillPersonData();
@@ -147,11 +138,11 @@ namespace MY_DVLD.People.Controls
 
 		private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			frmAddUpdatePerson frm = new frmAddUpdatePerson(_Person.PersonID);
+			frmAddUpdatePerson frm = new frmAddUpdatePerson(Person.PersonID);
 
 			frm.ShowDialog();
 			//Reload Same Person with changes 
-			LoadPersonData(_Person.PersonID);
+			LoadPersonData(Person.PersonID);
 		}
 	}
 }

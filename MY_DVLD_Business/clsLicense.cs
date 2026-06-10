@@ -81,7 +81,7 @@ namespace MY_DVLD_Business
 		public clsApplication ApplicationInfo { get; set; }
 		public clsLicenseClass LicenseClassInfo { get; set; }
 		public clsDriver DriverInfo { get; set; }
-
+		public clsDetainedLicense DetainedInfo { get; set; }
 		#endregion
 
 		public clsLicense()
@@ -119,6 +119,7 @@ namespace MY_DVLD_Business
 			UserInfo = clsUser.FindUserByUserID(this.CreatedByUserID);
 			LicenseClassInfo = clsLicenseClass.FindLicenseClassByID(this.LicenseClassID);
 			DriverInfo = clsDriver.FindDriverByID(this.DriverID);
+			DetainedInfo = clsDetainedLicense.FindDetainedLicenseByLicenseID(this.LicenseID);
 		}
 
 		public static DataTable GetAllLicenses()
@@ -305,6 +306,52 @@ namespace MY_DVLD_Business
 
 			return NewLicense;
 		}
+
+
+		public clsDetainedLicense DetainLicense(float FineFees, int CreatedByUserID)
+		{
+			clsDetainedLicense dl = new clsDetainedLicense();
+			dl.FineFees = FineFees;
+			dl.DetainDate = DateTime.Now;
+			dl.CreatedByUserID = CreatedByUserID;
+			dl.LicenseID = this.LicenseID;
+			dl.IsReleased = false;
+
+			if (dl.Save())
+				return dl;
+
+			else
+				return null;
+
+		}
+
+		public bool ReleaseDetainedLicense( int CreatedByUserID)
+		{
+
+			clsApplication _App = new clsApplication();
+			_App.ApplicationTypeID = enApplicationType.ReleaseDetainedDrivingLicsense;
+			_App.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+			_App.CreatedByUserID = CreatedByUserID;
+			_App.ApplicationDate = DateTime.Now;
+			_App.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+			_App.PaidFees = clsApplicationType.FindApplicationTypeByID(enApplicationType.ReleaseDetainedDrivingLicsense).ApplicationFees;
+			_App.LastStatusDate = DateTime.Now;
+
+			if (!_App.Save())
+				return false;
+
+
+
+
+			if (!this.DetainedInfo.ReleaseDetainedLicense(_App.ApplicationID, _App.CreatedByUserID))
+				return false;
+
+
+
+			return true;
+		}
+
+
 
 	}
 }
