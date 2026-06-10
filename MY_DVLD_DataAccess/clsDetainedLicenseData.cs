@@ -138,16 +138,17 @@ namespace MY_DVLD_DataAccess
 			try
 			{
 				string query = @"UPDATE DetainedLicenses
-SET
-LicenseID = @LicenseID,
-DetainDate = @DetainDate,
-FineFees = @FineFees,
-CreatedByUserID = @CreatedByUserID,
-IsReleased = @IsReleased,
-ReleaseDate = @ReleaseDate,
-ReleasedByUserID = @ReleasedByUserID,
-ReleaseApplicationID = @ReleaseApplicationID
-WHERE DetainID = @DetainID;";
+									SET
+									LicenseID = @LicenseID,
+									DetainDate = @DetainDate,
+									FineFees = @FineFees,
+									CreatedByUserID = @CreatedByUserID,
+									IsReleased = @IsReleased,
+									ReleaseDate = @ReleaseDate,
+									ReleasedByUserID = @ReleasedByUserID,
+									ReleaseApplicationID = @ReleaseApplicationID
+
+									WHERE DetainID = @DetainID;";
 
 				SqlCommand command = new SqlCommand(query, connection);
 
@@ -252,6 +253,51 @@ WHERE DetainID = @DetainID";
 			}
 			return IsFound;
 		}
+
+		public static bool FindDetainedLicenseByLicenseID(ref int DetainID, int LicenseID, ref DateTime DetainDate, ref float FineFees, ref int CreatedByUserID, ref bool IsReleased, ref DateTime ReleaseDate, ref int ReleasedByUserID, ref int ReleaseApplicationID)
+		{
+			bool IsFound = false;
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @" select top 1 * from DetainedLicenses where LicenseID= @LicenseID
+							order by DetainID Desc";
+
+			SqlCommand command = new SqlCommand(query, connection);
+			command.Parameters.AddWithValue($"@LicenseID", LicenseID);
+
+			try
+			{
+				connection.Open();
+
+				SqlDataReader reader = command.ExecuteReader();
+
+				if (reader.Read())
+				{
+					DetainID = reader["DetainID"] != DBNull.Value ? Convert.ToInt32(reader["DetainID"]) : -1;
+					DetainDate = reader["DetainDate"] != DBNull.Value ? Convert.ToDateTime(reader["DetainDate"]) : DateTime.MinValue;
+					FineFees = reader["FineFees"] != DBNull.Value ? Convert.ToSingle(reader["FineFees"]) : -1f;
+					CreatedByUserID = reader["CreatedByUserID"] != DBNull.Value ? Convert.ToInt32(reader["CreatedByUserID"]) : -1;
+					IsReleased = reader["IsReleased"] != DBNull.Value ? Convert.ToBoolean(reader["IsReleased"]) : false;
+					ReleaseDate = reader["ReleaseDate"] != DBNull.Value ? Convert.ToDateTime(reader["ReleaseDate"]) : DateTime.MinValue;
+					ReleasedByUserID = reader["ReleasedByUserID"] != DBNull.Value ? Convert.ToInt32(reader["ReleasedByUserID"]) : -1;
+					ReleaseApplicationID = reader["ReleaseApplicationID"] != DBNull.Value ? Convert.ToInt32(reader["ReleaseApplicationID"]) : -1;
+					IsFound = true;
+				}
+
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+				IsFound = false;
+			}
+			finally
+			{
+				connection.Close();
+			}
+			return IsFound;
+		}
+
 
 		public static bool IsLicenseDetainedByLicenseID(int LicenseID)
 		{

@@ -32,16 +32,15 @@ namespace MY_DVLD.Licenses
 
 
 
-			if (license.IsDetained)
+			if (!license.IsDetained)
 			{
 
-				MessageBox.Show($"License Is Already Detained", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"License Is Not Detained", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				_License = null;
 				return;
 
 			}
 			_License = license;
-
 			llShowLicenseHistory.Enabled = true;
 			llShowLicenseInfo.Enabled = true;
 			btnDetainLicense.Enabled = true;
@@ -70,7 +69,7 @@ namespace MY_DVLD.Licenses
 			}
 
 			lblDetainID.Text = dt.DetainID.ToString();
-			//lblLicenseID.Text = dt.LicenseID.ToString();
+			lblLicenseID.Text = dt.LicenseID.ToString();
 
 			llShowLicenseInfo.Enabled = true;
 			llShowLicenseHistory.Enabled = true;

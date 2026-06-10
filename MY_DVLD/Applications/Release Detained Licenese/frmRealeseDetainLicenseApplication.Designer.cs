@@ -39,22 +39,26 @@
 			this.pictureBox12 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox13 = new System.Windows.Forms.PictureBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.lblApplicationID = new System.Windows.Forms.Label();
 			this.lblTotalFees = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.lblApplicationFees = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.lblFineFees = new System.Windows.Forms.Label();
 			this.lblLicenseID = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
+			this.lblCreatedByUser = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
 			this.lblDetainDate = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
 			this.lblDetainID = new System.Windows.Forms.Label();
 			this.label17 = new System.Windows.Forms.Label();
+			this.llShowLicenseInfo = new System.Windows.Forms.LinkLabel();
+			this.llShowLicenseHistory = new System.Windows.Forms.LinkLabel();
+			this.btnReleaseLicense = new System.Windows.Forms.Button();
+			this.btnClose = new System.Windows.Forms.Button();
 			this.gpDetain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -69,16 +73,17 @@
 			// ucDriverLicenseWithFilter1
 			// 
 			this.ucDriverLicenseWithFilter1.IsFilterEnabled = true;
-			this.ucDriverLicenseWithFilter1.Location = new System.Drawing.Point(26, 64);
+			this.ucDriverLicenseWithFilter1.Location = new System.Drawing.Point(26, 49);
 			this.ucDriverLicenseWithFilter1.Name = "ucDriverLicenseWithFilter1";
 			this.ucDriverLicenseWithFilter1.Size = new System.Drawing.Size(765, 614);
 			this.ucDriverLicenseWithFilter1.TabIndex = 0;
+			this.ucDriverLicenseWithFilter1.OnLicenseFound += new MY_DVLD.Licenses.Local_Driving_Licenses.Controls.UCDriverLicenseWithFilter.OnLicenseSelected(this.ucDriverLicenseWithFilter1_OnLicenseFound);
 			// 
 			// lblTitle
 			// 
 			this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lblTitle.Location = new System.Drawing.Point(131, 22);
+			this.lblTitle.Location = new System.Drawing.Point(110, 9);
 			this.lblTitle.Name = "lblTitle";
 			this.lblTitle.Size = new System.Drawing.Size(568, 39);
 			this.lblTitle.TabIndex = 150;
@@ -95,17 +100,17 @@
 			this.gpDetain.Controls.Add(this.pictureBox12);
 			this.gpDetain.Controls.Add(this.pictureBox3);
 			this.gpDetain.Controls.Add(this.pictureBox13);
-			this.gpDetain.Controls.Add(this.label2);
+			this.gpDetain.Controls.Add(this.lblApplicationID);
 			this.gpDetain.Controls.Add(this.lblTotalFees);
 			this.gpDetain.Controls.Add(this.label8);
 			this.gpDetain.Controls.Add(this.label7);
-			this.gpDetain.Controls.Add(this.label3);
+			this.gpDetain.Controls.Add(this.lblApplicationFees);
 			this.gpDetain.Controls.Add(this.label6);
 			this.gpDetain.Controls.Add(this.lblFineFees);
 			this.gpDetain.Controls.Add(this.lblLicenseID);
 			this.gpDetain.Controls.Add(this.label11);
 			this.gpDetain.Controls.Add(this.label13);
-			this.gpDetain.Controls.Add(this.label14);
+			this.gpDetain.Controls.Add(this.lblCreatedByUser);
 			this.gpDetain.Controls.Add(this.label15);
 			this.gpDetain.Controls.Add(this.lblDetainDate);
 			this.gpDetain.Controls.Add(this.label16);
@@ -198,16 +203,16 @@
 			this.pictureBox13.TabIndex = 204;
 			this.pictureBox13.TabStop = false;
 			// 
-			// label2
+			// lblApplicationID
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(619, 129);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(59, 20);
-			this.label2.TabIndex = 202;
-			this.label2.Text = "[????]";
+			this.lblApplicationID.AutoSize = true;
+			this.lblApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblApplicationID.Location = new System.Drawing.Point(619, 129);
+			this.lblApplicationID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblApplicationID.Name = "lblApplicationID";
+			this.lblApplicationID.Size = new System.Drawing.Size(59, 20);
+			this.lblApplicationID.TabIndex = 202;
+			this.lblApplicationID.Text = "[????]";
 			// 
 			// lblTotalFees
 			// 
@@ -242,16 +247,16 @@
 			this.label7.TabIndex = 200;
 			this.label7.Text = "Total Fees:";
 			// 
-			// label3
+			// lblApplicationFees
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(225, 94);
-			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(59, 20);
-			this.label3.TabIndex = 199;
-			this.label3.Text = "[$$$$]";
+			this.lblApplicationFees.AutoSize = true;
+			this.lblApplicationFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblApplicationFees.Location = new System.Drawing.Point(225, 94);
+			this.lblApplicationFees.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblApplicationFees.Name = "lblApplicationFees";
+			this.lblApplicationFees.Size = new System.Drawing.Size(59, 20);
+			this.lblApplicationFees.TabIndex = 199;
+			this.lblApplicationFees.Text = "[$$$$]";
 			// 
 			// label6
 			// 
@@ -308,16 +313,16 @@
 			this.label13.TabIndex = 181;
 			this.label13.Text = "Created By:";
 			// 
-			// label14
+			// lblCreatedByUser
 			// 
-			this.label14.AutoSize = true;
-			this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(619, 56);
-			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(59, 20);
-			this.label14.TabIndex = 180;
-			this.label14.Text = "[????]";
+			this.lblCreatedByUser.AutoSize = true;
+			this.lblCreatedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblCreatedByUser.Location = new System.Drawing.Point(619, 56);
+			this.lblCreatedByUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblCreatedByUser.Name = "lblCreatedByUser";
+			this.lblCreatedByUser.Size = new System.Drawing.Size(59, 20);
+			this.lblCreatedByUser.TabIndex = 180;
+			this.lblCreatedByUser.Text = "[????]";
 			// 
 			// label15
 			// 
@@ -374,16 +379,75 @@
 			this.label17.TabIndex = 172;
 			this.label17.Text = "Detain ID:";
 			// 
+			// llShowLicenseInfo
+			// 
+			this.llShowLicenseInfo.AutoSize = true;
+			this.llShowLicenseInfo.Enabled = false;
+			this.llShowLicenseInfo.Font = new System.Drawing.Font("Tahoma", 12F);
+			this.llShowLicenseInfo.Location = new System.Drawing.Point(185, 905);
+			this.llShowLicenseInfo.Name = "llShowLicenseInfo";
+			this.llShowLicenseInfo.Size = new System.Drawing.Size(145, 19);
+			this.llShowLicenseInfo.TabIndex = 202;
+			this.llShowLicenseInfo.TabStop = true;
+			this.llShowLicenseInfo.Text = "Show Licenses Info";
+			this.llShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseInfo_LinkClicked);
+			// 
+			// llShowLicenseHistory
+			// 
+			this.llShowLicenseHistory.AutoSize = true;
+			this.llShowLicenseHistory.Enabled = false;
+			this.llShowLicenseHistory.Font = new System.Drawing.Font("Tahoma", 12F);
+			this.llShowLicenseHistory.Location = new System.Drawing.Point(13, 905);
+			this.llShowLicenseHistory.Name = "llShowLicenseHistory";
+			this.llShowLicenseHistory.Size = new System.Drawing.Size(166, 19);
+			this.llShowLicenseHistory.TabIndex = 201;
+			this.llShowLicenseHistory.TabStop = true;
+			this.llShowLicenseHistory.Text = "Show Licenses History";
+			this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
+			// 
+			// btnReleaseLicense
+			// 
+			this.btnReleaseLicense.Enabled = false;
+			this.btnReleaseLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnReleaseLicense.Image = global::MY_DVLD.Properties.Resources.Release_Detained_License_32;
+			this.btnReleaseLicense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnReleaseLicense.Location = new System.Drawing.Point(546, 898);
+			this.btnReleaseLicense.Name = "btnReleaseLicense";
+			this.btnReleaseLicense.Size = new System.Drawing.Size(186, 37);
+			this.btnReleaseLicense.TabIndex = 200;
+			this.btnReleaseLicense.Text = "Release License";
+			this.btnReleaseLicense.UseVisualStyleBackColor = true;
+			this.btnReleaseLicense.Click += new System.EventHandler(this.btnReleaseLicense_Click);
+			// 
+			// btnClose
+			// 
+			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btnClose.Image = global::MY_DVLD.Properties.Resources.Close_32;
+			this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnClose.Location = new System.Drawing.Point(413, 898);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(126, 37);
+			this.btnClose.TabIndex = 199;
+			this.btnClose.Text = "Close";
+			this.btnClose.UseVisualStyleBackColor = true;
+			// 
 			// frmRealeseDetainLicenseApplication
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(834, 874);
+			this.ClientSize = new System.Drawing.Size(790, 949);
+			this.Controls.Add(this.llShowLicenseInfo);
+			this.Controls.Add(this.llShowLicenseHistory);
+			this.Controls.Add(this.btnReleaseLicense);
+			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.gpDetain);
 			this.Controls.Add(this.lblTitle);
 			this.Controls.Add(this.ucDriverLicenseWithFilter1);
 			this.Name = "frmRealeseDetainLicenseApplication";
 			this.Text = "frmReleaseLicense";
+			this.Load += new System.EventHandler(this.frmRealeseDetainLicenseApplication_Load);
 			this.gpDetain.ResumeLayout(false);
 			this.gpDetain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
@@ -395,6 +459,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -411,21 +476,25 @@
 		private System.Windows.Forms.PictureBox pictureBox12;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.PictureBox pictureBox13;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label lblApplicationID;
 		private System.Windows.Forms.Label lblTotalFees;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label lblApplicationFees;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label lblFineFees;
 		private System.Windows.Forms.Label lblLicenseID;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label lblCreatedByUser;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Label lblDetainDate;
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.Label lblDetainID;
 		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.LinkLabel llShowLicenseInfo;
+		private System.Windows.Forms.LinkLabel llShowLicenseHistory;
+		private System.Windows.Forms.Button btnReleaseLicense;
+		private System.Windows.Forms.Button btnClose;
 	}
 }

@@ -22,7 +22,7 @@ namespace MY_DVLD_Business
 		public int ReleasedByUserID { get; set; }
 		public int ReleaseApplicationID { get; set; }
 
-
+		public clsUser CreatedByUserInfo { get; set; }
 		public enum enMode { AddNew, Update };
 		enMode Mode;
 
@@ -39,8 +39,9 @@ namespace MY_DVLD_Business
 			this.IsReleased = false;
 			this.ReleaseDate = DateTime.MaxValue;
 			this.ReleasedByUserID = -1;
-			this.ReleaseApplicationID =-1;
+			this.ReleaseApplicationID = -1;
 
+			this.CreatedByUserInfo = null;
 			this.Mode = enMode.AddNew;
 		}
 
@@ -56,6 +57,7 @@ namespace MY_DVLD_Business
 			this.ReleasedByUserID = ReleasedByUserID;
 			this.ReleaseApplicationID = ReleaseApplicationID;
 
+			this.CreatedByUserInfo = clsUser.FindUserByUserID(this.CreatedByUserID);
 			this.Mode = enMode.Update;
 		}
 
@@ -128,12 +130,50 @@ namespace MY_DVLD_Business
 			return null;
 		}
 
+		public static clsDetainedLicense FindDetainedLicenseByLicenseID(int LicenseID)
+		{
+			int DetainID = 0;
+			DateTime DetainDate = DateTime.MinValue;
+			float FineFees = 0f;
+			int CreatedByUserID = 0;
+			DateTime ReleaseDate = DateTime.MinValue;
+			int ReleasedByUserID = 0;
+			int ReleaseApplicationID = 0;
+			bool IsReleased = false;
+
+			bool IsFound = clsDetainedLicenseData.FindDetainedLicenseByLicenseID(ref DetainID, LicenseID, ref DetainDate, ref FineFees, ref CreatedByUserID, ref IsReleased, ref ReleaseDate, ref ReleasedByUserID, ref ReleaseApplicationID);
+
+			if (IsFound)
+			{
+				clsDetainedLicense DetainedLicense = new clsDetainedLicense(DetainID, LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased, ReleaseDate, ReleasedByUserID, ReleaseApplicationID);
+				return DetainedLicense;
+			}
+
+			return null;
+		}
+
 		public static bool IsLicenseDetained(int LicenseID)
 		{
 			bool IsDetained = clsDetainedLicenseData.IsLicenseDetainedByLicenseID(LicenseID);
 
 			return IsDetained;
 		}
+
+
+		public bool ReleaseDetainedLicense(int ApplicationID, int ReleasedByUserID)
+		{
+			this.IsReleased = true;
+			this.ReleaseApplicationID = ApplicationID;
+			this.ReleaseDate = DateTime.Now;
+			this.ReleasedByUserID = ReleasedByUserID;
+			
+			if (this.Save())
+				return true;
+
+			else
+				return false;
+		}
+
 
 	}
 }

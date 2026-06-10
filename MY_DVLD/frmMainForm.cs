@@ -109,18 +109,25 @@ namespace MY_DVLD
 
 		private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			frmRealeseDetainLicenseApplication frm = new frmRealeseDetainLicenseApplication();
+			frm.ShowDialog();
 		}
 
 		private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			frmRealeseDetainLicenseApplication frm = new frmRealeseDetainLicenseApplication();
+			frm.ShowDialog();
 		}
 
 		private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
 			frm.ShowDialog();
+		}
+
+		private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
