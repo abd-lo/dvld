@@ -22,8 +22,10 @@ namespace MY_DVLD_Business
 		public bool IsActive { get; set; }
 		public int CreatedByUserID { get; set; }
 
-		clsUser CreatedByUserInfo;
-		clsDriver DriverInfo;
+		public clsLicense IssuedUsingLocalLicenseInfo;
+		public clsUser CreatedByUserInfo;
+		public clsDriver DriverInfo;
+
 		public enum enMode { AddNew, Update };
 		public enMode Mode;
 		#endregion
@@ -57,6 +59,13 @@ namespace MY_DVLD_Business
 			Mode = enMode.Update;
 			CreatedByUserInfo = clsUser.FindUserByUserID(CreatedByUserID);
 			DriverInfo = clsDriver.FindDriverByID(DriverID);
+			IssuedUsingLocalLicenseInfo = clsLicense.FindLicenseByID(IssuedUsingLocalLicenseID);
+		}
+
+
+		public static DataTable GetAllInternationalLicensesBasicInfo()
+		{
+			return clsInternationalLicenseData.GetAllInternationalLicensesBasicInfo();
 		}
 
 		public static DataTable GetAllInternationalLicenseByPersonID(int PersonID)
@@ -105,7 +114,7 @@ namespace MY_DVLD_Business
 		{
 			int ApplicationID = 0;
 			int DriverID = 0;
-			bool IsActive = false ;
+			bool IsActive = false;
 			int IssuedUsingLocalLicenseID = 0;
 			DateTime IssueDate = DateTime.MinValue;
 			DateTime ExpirationDate = DateTime.MinValue;

@@ -143,6 +143,24 @@
     <Compile Include="Licenses\frmShowPersonDrivingLicenseHistory.Designer.cs">
       <DependentUpon>frmShowPersonDrivingLicenseHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\International Licenses\Controls\UCInternationalDriverLicense.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\Controls\UCInternationalDriverLicense.Designer.cs">
+      <DependentUpon>UCInternationalDriverLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\frmShowInternationalLicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\frmShowInternationalLicenseInfo.Designer.cs">
+      <DependentUpon>frmShowInternationalLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\Manage International Licenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\Manage International Licenses.Designer.cs">
+      <DependentUpon>Manage International Licenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\Local Driving Licenses\Controls\UCDriverLicenseWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -327,6 +345,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\frmShowPersonDrivingLicenseHistory.resx">
       <DependentUpon>frmShowPersonDrivingLicenseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\International Licenses\Controls\UCInternationalDriverLicense.resx">
+      <DependentUpon>UCInternationalDriverLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\International Licenses\frmShowInternationalLicenseInfo.resx">
+      <DependentUpon>frmShowInternationalLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\International Licenses\Manage International Licenses.resx">
+      <DependentUpon>Manage International Licenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Driving Licenses\Controls\UCDriverLicenseWithFilter.resx">
       <DependentUpon>UCDriverLicenseWithFilter.cs</DependentUpon>
@@ -545,6 +572,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Applications\International License\" />
     <Folder Include="Applications\Renew Local License\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

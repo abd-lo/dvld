@@ -46,6 +46,38 @@ namespace MY_DVLD_DataAccess
 			return dt;
 		}
 
+		public static DataTable GetAllInternationalLicensesBasicInfo()
+		{
+			DataTable dt = new DataTable();
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"SELECT        InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+								FROM            InternationalLicenses";
+
+			SqlCommand command = new SqlCommand(query, connection);
+
+			try
+			{
+				connection.Open();
+
+				SqlDataReader reader = command.ExecuteReader();
+
+				if (reader.HasRows)
+				{
+					dt.Load(reader);
+				}
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+			}
+			finally
+			{
+				connection.Close();
+			}
+
+			return dt;
+		}
 
 		public static DataTable GetAllInternationalLicensesForPersonID(int PersonID)
 		{
@@ -202,7 +234,7 @@ WHERE InternationalLicenseID = @InternationalLicenseID";
 			bool IsFound = false;
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-			string query = @"SELECT * FROM InternationalLicense WHERE InternationalLicenseID = @InternationalLicenseID";
+			string query = @"SELECT * FROM InternationalLicenses WHERE InternationalLicenseID = @InternationalLicenseID";
 
 			SqlCommand command = new SqlCommand(query, connection);
 			command.Parameters.AddWithValue($"@InternationalLicenseID", InternationalLicenseID);
