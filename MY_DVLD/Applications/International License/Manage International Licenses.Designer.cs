@@ -105,7 +105,7 @@
             this.showDetailsToolStripMenuItem,
             this.showPersonLicenseHistoryToolStripMenuItem});
 			this.cmsApplications.Name = "contextMenuStrip1";
-			this.cmsApplications.Size = new System.Drawing.Size(242, 140);
+			this.cmsApplications.Size = new System.Drawing.Size(242, 118);
 			// 
 			// PesonDetailsToolStripMenuItem
 			// 
@@ -209,6 +209,7 @@
 			this.btnAddNewApp.Size = new System.Drawing.Size(88, 75);
 			this.btnAddNewApp.TabIndex = 167;
 			this.btnAddNewApp.UseVisualStyleBackColor = true;
+			this.btnAddNewApp.Click += new System.EventHandler(this.btnAddNewApp_Click);
 			// 
 			// btnClose
 			// 

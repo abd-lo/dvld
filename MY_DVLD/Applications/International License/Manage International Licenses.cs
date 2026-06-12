@@ -1,4 +1,5 @@
-﻿using MY_DVLD.GlobalClasses;
+﻿using MY_DVLD.Applications.International_License;
+using MY_DVLD.GlobalClasses;
 using MY_DVLD.People;
 using MY_DVLD_Business;
 using System;
@@ -205,6 +206,12 @@ namespace MY_DVLD.Licenses.International_Licenses
 			int InLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[0].Value;
 			clsInternationalLicense InLicense = clsInternationalLicense.FindInternationalLicenseByID(InLicenseID);
 			frmShowPersonDrivingLicenseHistory frm = new frmShowPersonDrivingLicenseHistory(InLicense.DriverInfo.PersonID);
+			frm.ShowDialog();
+		}
+
+		private void btnAddNewApp_Click(object sender, EventArgs e)
+		{
+			frmIssueInternationalLicense frm = new frmIssueInternationalLicense();
 			frm.ShowDialog();
 		}
 	}

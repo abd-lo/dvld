@@ -121,7 +121,7 @@ namespace MY_DVLD_DataAccess
 			try
 			{
 				string query = @"
-INSERT INTO InternationalLicense
+INSERT INTO InternationalLicenses
 (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID)
 VALUES
 (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive, @CreatedByUserID)
@@ -271,12 +271,55 @@ WHERE InternationalLicenseID = @InternationalLicenseID";
 			return IsFound;
 		}
 
+		public static int GetActiveInternationalLicenseIDByDriverID(int DriverID)
+		{
+			int InternationalLicenseID = -1;
+
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"  
+                            SELECT Top 1 InternationalLicenseID
+                            FROM InternationalLicenses 
+                            where DriverID=@DriverID and GetDate() between IssueDate and ExpirationDate 
+                            order by ExpirationDate Desc;";
+
+			SqlCommand command = new SqlCommand(query, connection);
+
+			command.Parameters.AddWithValue("@DriverID", DriverID);
+
+			try
+			{
+				connection.Open();
+
+				object result = command.ExecuteScalar();
+
+				if (result != null && int.TryParse(result.ToString(), out int insertedID))
+				{
+					InternationalLicenseID = insertedID;
+				}
+			}
+
+			catch (Exception ex)
+			{
+				//Console.WriteLine("Error: " + ex.Message);
+
+			}
+
+			finally
+			{
+				connection.Close();
+			}
 
 
-
+			return InternationalLicenseID;
+		}
 
 	}
+
+
+
 }
+
 
 
 

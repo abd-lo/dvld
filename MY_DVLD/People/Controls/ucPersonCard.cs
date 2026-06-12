@@ -107,7 +107,7 @@ namespace MY_DVLD.People.Controls
 				return;
 			}
 
-			PersonID = Person.PersonID;
+			this.PersonID = Person.PersonID;
 
 			llEditPersonInfo.Enabled = true;
 			_FillPersonData();
@@ -128,7 +128,7 @@ namespace MY_DVLD.People.Controls
 				_ResetValues();
 				return;
 			}
-			PersonID = Person.PersonID;
+			this.PersonID = Person.PersonID;
 			llEditPersonInfo.Enabled = true;
 
 			_FillPersonData();

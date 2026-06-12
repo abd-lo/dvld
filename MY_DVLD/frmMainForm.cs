@@ -137,5 +137,17 @@ namespace MY_DVLD
 			frmManageInternationalLicenseApplications frm = new frmManageInternationalLicenseApplications();
 			frm.ShowDialog();
 		}
+
+		private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmShowUserDetails frm = new frmShowUserDetails(clsGlobal.CurrentUser.UserID);
+			frm.ShowDialog();
+		}
+
+		private void listUsersToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmListUsers frm = new frmListUsers();
+			frm.ShowDialog();
+		}
 	}
 }
