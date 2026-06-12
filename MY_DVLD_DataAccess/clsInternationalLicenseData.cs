@@ -46,6 +46,38 @@ namespace MY_DVLD_DataAccess
 			return dt;
 		}
 
+		public static DataTable GetAllInternationalLicensesBasicInfo()
+		{
+			DataTable dt = new DataTable();
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"SELECT        InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+								FROM            InternationalLicenses";
+
+			SqlCommand command = new SqlCommand(query, connection);
+
+			try
+			{
+				connection.Open();
+
+				SqlDataReader reader = command.ExecuteReader();
+
+				if (reader.HasRows)
+				{
+					dt.Load(reader);
+				}
+			}
+			catch (Exception ex)
+			{
+				// Console.WriteLine("Error: " + ex.Message);
+			}
+			finally
+			{
+				connection.Close();
+			}
+
+			return dt;
+		}
 
 		public static DataTable GetAllInternationalLicensesForPersonID(int PersonID)
 		{
@@ -89,7 +121,7 @@ namespace MY_DVLD_DataAccess
 			try
 			{
 				string query = @"
-INSERT INTO InternationalLicense
+INSERT INTO InternationalLicenses
 (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID)
 VALUES
 (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive, @CreatedByUserID)
@@ -202,7 +234,7 @@ WHERE InternationalLicenseID = @InternationalLicenseID";
 			bool IsFound = false;
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-			string query = @"SELECT * FROM InternationalLicense WHERE InternationalLicenseID = @InternationalLicenseID";
+			string query = @"SELECT * FROM InternationalLicenses WHERE InternationalLicenseID = @InternationalLicenseID";
 
 			SqlCommand command = new SqlCommand(query, connection);
 			command.Parameters.AddWithValue($"@InternationalLicenseID", InternationalLicenseID);
@@ -239,12 +271,55 @@ WHERE InternationalLicenseID = @InternationalLicenseID";
 			return IsFound;
 		}
 
+		public static int GetActiveInternationalLicenseIDByDriverID(int DriverID)
+		{
+			int InternationalLicenseID = -1;
+
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = @"  
+                            SELECT Top 1 InternationalLicenseID
+                            FROM InternationalLicenses 
+                            where DriverID=@DriverID and GetDate() between IssueDate and ExpirationDate 
+                            order by ExpirationDate Desc;";
+
+			SqlCommand command = new SqlCommand(query, connection);
+
+			command.Parameters.AddWithValue("@DriverID", DriverID);
+
+			try
+			{
+				connection.Open();
+
+				object result = command.ExecuteScalar();
+
+				if (result != null && int.TryParse(result.ToString(), out int insertedID))
+				{
+					InternationalLicenseID = insertedID;
+				}
+			}
+
+			catch (Exception ex)
+			{
+				//Console.WriteLine("Error: " + ex.Message);
+
+			}
+
+			finally
+			{
+				connection.Close();
+			}
 
 
-
+			return InternationalLicenseID;
+		}
 
 	}
+
+
+
 }
+
 
 
 

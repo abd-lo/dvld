@@ -158,7 +158,7 @@
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(480, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(496, 6);
 			// 
 			// ReplacementLostOrDamagedDrivingLicenseToolStripMenuItem
 			// 
@@ -172,7 +172,7 @@
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(480, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(496, 6);
 			// 
 			// releaseDetainedDrivingLicenseToolStripMenuItem
 			// 
@@ -224,6 +224,7 @@
 			this.ManageInternationaDrivingLicenseToolStripMenuItem1.Name = "ManageInternationaDrivingLicenseToolStripMenuItem1";
 			this.ManageInternationaDrivingLicenseToolStripMenuItem1.Size = new System.Drawing.Size(424, 38);
 			this.ManageInternationaDrivingLicenseToolStripMenuItem1.Text = "International License Applications";
+			this.ManageInternationaDrivingLicenseToolStripMenuItem1.Click += new System.EventHandler(this.ManageInternationaDrivingLicenseToolStripMenuItem1_Click);
 			// 
 			// toolStripSeparator5
 			// 
@@ -316,9 +317,11 @@
 			// 
 			// listUsersToolStripMenuItem
 			// 
+			this.listUsersToolStripMenuItem.Image = global::MY_DVLD.Properties.Resources.Users_2_64;
 			this.listUsersToolStripMenuItem.Name = "listUsersToolStripMenuItem";
-			this.listUsersToolStripMenuItem.Size = new System.Drawing.Size(168, 32);
+			this.listUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
 			this.listUsersToolStripMenuItem.Text = "ListUsers";
+			this.listUsersToolStripMenuItem.Click += new System.EventHandler(this.listUsersToolStripMenuItem_Click);
 			// 
 			// closeToolStripMenuItem
 			// 
@@ -340,6 +343,7 @@
 			this.currentUserInfoToolStripMenuItem.Name = "currentUserInfoToolStripMenuItem";
 			this.currentUserInfoToolStripMenuItem.Size = new System.Drawing.Size(265, 38);
 			this.currentUserInfoToolStripMenuItem.Text = "&Current User Info";
+			this.currentUserInfoToolStripMenuItem.Click += new System.EventHandler(this.currentUserInfoToolStripMenuItem_Click);
 			// 
 			// changePasswordToolStripMenuItem
 			// 

@@ -328,11 +328,11 @@ WHERE LicenseID = @LicenseID";
 			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
 			string query = @"			
-			SELECT DefaultValidityLength
+						 			SELECT DefaultValidityLength
 			FROM            
 			LicenseClasses
 			where 
-			LicenseClass=@LicenseClassID;";
+			LicenseClassID=@LicenseClassID;";
 
 			SqlCommand command = new SqlCommand(query, connection);
 

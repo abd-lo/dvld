@@ -6,6 +6,7 @@ using MY_DVLD.Applications.ReplacementForLostOrDamaged;
 using MY_DVLD.Drivers;
 using MY_DVLD.GlobalClasses;
 using MY_DVLD.Licenses;
+using MY_DVLD.Licenses.International_Licenses;
 using MY_DVLD.Login;
 using MY_DVLD.People;
 using MY_DVLD.Users;
@@ -127,7 +128,26 @@ namespace MY_DVLD
 
 		private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			frmManageInternationalLicenseApplications frm = new frmManageInternationalLicenseApplications();
+			frm.ShowDialog();
+		}
 
+		private void ManageInternationaDrivingLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			frmManageInternationalLicenseApplications frm = new frmManageInternationalLicenseApplications();
+			frm.ShowDialog();
+		}
+
+		private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmShowUserDetails frm = new frmShowUserDetails(clsGlobal.CurrentUser.UserID);
+			frm.ShowDialog();
+		}
+
+		private void listUsersToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmListUsers frm = new frmListUsers();
+			frm.ShowDialog();
 		}
 	}
 }
