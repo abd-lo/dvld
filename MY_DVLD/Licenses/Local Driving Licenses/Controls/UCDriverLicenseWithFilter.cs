@@ -33,6 +33,26 @@ namespace MY_DVLD.Licenses.Local_Driving_Licenses.Controls
 				btnFind.Enabled = value;
 			}
 		}
+
+
+
+		public void LoadLicense(int LicenseIDParameter)
+		{
+			LicenseInfo = clsLicense.FindLicenseByID(LicenseIDParameter);
+			if (LicenseInfo == null)
+			{
+				MessageBox.Show($"Can't be Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+
+			}
+
+			this.LicenseID = LicenseIDParameter;
+
+			ucLocalDrivingLicense1.LoadData(LicenseIDParameter);
+			OnLicenseChecked(LicenseInfo);
+		}
+
+
 		private void btnFind_Click(object sender, EventArgs e)
 		{
 			if (!int.TryParse(txtLicenseID.Text, out int LicenseID))

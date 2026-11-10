@@ -1,4 +1,5 @@
 ﻿using MY_DVLD.GlobalClasses;
+using MY_DVLD.Licenses;
 using MY_DVLD.Licenses.Local_Driving_Licenses;
 using MY_DVLD.Tests;
 using MY_DVLD_Business;
@@ -341,6 +342,16 @@ namespace MY_DVLD.Applications.Local_Driving_License
 		{
 			int LDLID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
 			frmIssueLocalDrivingLicense frm = new frmIssueLocalDrivingLicense(LDLID);
+			frm.ShowDialog();
+			_RefreshData();
+		}
+
+		private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			int LDLID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+			clsLocalDrivingLicenseApplication LDLInfo = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationByID(LDLID);
+
+			frmShowPersonDrivingLicenseHistory frm = new frmShowPersonDrivingLicenseHistory(LDLInfo.ApplicantPersonID);
 			frm.ShowDialog();
 			_RefreshData();
 		}

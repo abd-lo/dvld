@@ -9,6 +9,7 @@ using MY_DVLD.Licenses;
 using MY_DVLD.Licenses.International_Licenses;
 using MY_DVLD.Login;
 using MY_DVLD.People;
+using MY_DVLD.Tests.TestTypes;
 using MY_DVLD.Users;
 using MY_DVLD_Business;
 using System;
@@ -147,6 +148,12 @@ namespace MY_DVLD
 		private void listUsersToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			frmListUsers frm = new frmListUsers();
+			frm.ShowDialog();
+		}
+
+		private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			 frmListTestTypes frm = new frmListTestTypes();
 			frm.ShowDialog();
 		}
 	}

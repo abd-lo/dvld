@@ -286,6 +286,7 @@
 			this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
 			this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(384, 70);
 			this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+			this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
 			// 
 			// peopleToolStripMenuItem
 			// 
@@ -319,7 +320,7 @@
 			// 
 			this.listUsersToolStripMenuItem.Image = global::MY_DVLD.Properties.Resources.Users_2_64;
 			this.listUsersToolStripMenuItem.Name = "listUsersToolStripMenuItem";
-			this.listUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+			this.listUsersToolStripMenuItem.Size = new System.Drawing.Size(168, 32);
 			this.listUsersToolStripMenuItem.Text = "ListUsers";
 			this.listUsersToolStripMenuItem.Click += new System.EventHandler(this.listUsersToolStripMenuItem_Click);
 			// 

@@ -32,10 +32,10 @@ namespace MY_DVLD.Licenses
 
 
 
-			if (!license.IsDetained)
+			if (license.IsDetained)
 			{
 
-				MessageBox.Show($"License Is Not Detained", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"License Is  Detained", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				_License = null;
 				return;
 
@@ -74,6 +74,8 @@ namespace MY_DVLD.Licenses
 			llShowLicenseInfo.Enabled = true;
 			llShowLicenseHistory.Enabled = true;
 
+			MessageBox.Show($"Detained Successfulyl", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			return;
 
 		}
 

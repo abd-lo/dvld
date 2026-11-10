@@ -1,6 +1,7 @@
 ﻿using MY_DVLD.GlobalClasses;
 using MY_DVLD.Licenses;
 using MY_DVLD.Licenses.Local_Driving_Licenses;
+using MY_DVLD.Licenses.Local_Driving_Licenses.Controls;
 using MY_DVLD_Business;
 using MY_DVLD_Business.Enum;
 using System;
@@ -21,6 +22,12 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 		{
 			InitializeComponent();
 		}
+		public frmRealeseDetainLicenseApplication(int LicenseID)
+		{
+			InitializeComponent();
+			ucDriverLicenseWithFilter1.LoadLicense(LicenseID);
+		}
+
 		clsLicense _License;
 		clsDetainedLicense _DetainedLicense;
 

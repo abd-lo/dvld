@@ -103,6 +103,7 @@ namespace MY_DVLD.Applications.Local_Driving_License
 			if (_LDLApp == null)
 			{
 				MessageBox.Show($"There Is no Application with this ID{_LDLAppID}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
 			}
 
 			ucPersonCardWithFind1.LoadPerson(_LDLApp.ApplicantPersonID);

@@ -1,5 +1,6 @@
 ﻿using MY_DVLD.GlobalClasses;
 using MY_DVLD.Licenses;
+using MY_DVLD.Licenses.Local_Driving_Licenses;
 using MY_DVLD.People;
 using MY_DVLD_Business;
 using System;
@@ -39,7 +40,9 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 
 		private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			int LicenseID = (int)dgvDetainedLicenses.CurrentRow.Cells[1].Value;
+			frmShowLocalDrivingLicense frm=new frmShowLocalDrivingLicense(LicenseID);
+			frm.ShowDialog();
 		}
 
 		private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,12 +55,18 @@ namespace MY_DVLD.Applications.Detain_and_Release_License
 
 		private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			int LicenseID = (int)dgvDetainedLicenses.CurrentRow.Cells[1].Value;
 
+			frmRealeseDetainLicenseApplication frm = new frmRealeseDetainLicenseApplication(LicenseID);
+			frm.ShowDialog();
+			_RefreshData();
 		}
 
 		private void btnReleaseDetainedLicense_Click(object sender, EventArgs e)
 		{
-
+			frmRealeseDetainLicenseApplication frm = new frmRealeseDetainLicenseApplication();
+			frm.ShowDialog();
+			_RefreshData();
 		}
 
 		private void btnDetainLicense_Click(object sender, EventArgs e)
